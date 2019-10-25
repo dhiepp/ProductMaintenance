@@ -1,9 +1,3 @@
-<%-- 
-    Document   : add_product
-    Created on : Sep 28, 2019, 10:13:24 AM
-    Author     : Doan Hong Hiep - B16DCPT049 - Nhom 6
---%>
-
 <%@page import="model.Product"%>
 <%
     Product product = (Product) request.getAttribute("product");

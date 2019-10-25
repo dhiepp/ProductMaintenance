@@ -1,9 +1,3 @@
-<%-- 
-    Document   : update_product
-    Created on : 17-Oct-2019, 12:30:53
-    Author     : Hiep
---%>
-
 <%@page import="model.Product"%>
 <%
     Product product = (Product)request.getAttribute("product");

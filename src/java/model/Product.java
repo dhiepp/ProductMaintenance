@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
-/*
-* Doan Hong Hiep - B16DCPT049 - Nhom 6
-*/
+
 public class Product {
     private String code;
     private String description;

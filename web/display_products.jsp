@@ -1,9 +1,3 @@
-<%-- 
-    Document   : display_products
-    Created on : Sep 28, 2019, 8:55:33 AM
-    Author     : 503
---%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Product"%>
 

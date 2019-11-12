@@ -1,12 +1,16 @@
 package model;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private String code;
     private String name;
     private String description;
     private int weight;
     private float price;
-
+    
+    public Product() {}
+    
     public Product(String code, String name, String description, int weight, float price) {
         this.code = code;
         this.name = name;
@@ -14,8 +18,6 @@ public class Product {
         this.weight = weight;
         this.price = price;
     }
-
-    public Product() {}
 
     public String getCode() {
         return code;

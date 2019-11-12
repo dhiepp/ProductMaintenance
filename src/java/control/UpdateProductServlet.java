@@ -37,47 +37,56 @@ public class UpdateProductServlet extends HttpServlet {
         ServletContext context = getServletContext();
         String path = context.getRealPath("/WEB-INF/products.txt");
         
-        String[] message = new String[3];
+        String[] message = new String[5];
         String url = "";
         boolean filled = true;
           
         //Get product info
-        String oldProductCode = request.getParameter("oldProductCode");
         String code = request.getParameter("code");
+        String name = request.getParameter("name");
         String desc = request.getParameter("desc");
+        String weightString = request.getParameter("weight");
         String priceString = request.getParameter("price");
         
         //Check empty fields
-        if (code.isEmpty()) {
-            message[0] = "You must enter a code for the product.";
+        if (name.isEmpty()) {
+            message[1] = "You must enter a name for the product.";
             filled = false;
         }
         if (desc.isEmpty()) {
-            message[1] = "You must enter a description for the product.";
+            message[2] = "You must enter a description for the product.";
             filled = false;
         }
-               
+        
+        //Check weight number
+        int weight = -1;
+        try {
+            weight = Integer.parseInt(weightString);
+            if (weight < 0) throw new NumberFormatException();
+        } catch (NumberFormatException e) {
+            message[3] = "You must enter a valid weight number.";
+            filled = false;
+        }  
         //Check price number
         float price = -1;
         try {
             price = Float.parseFloat(priceString);
             if (price < 0) throw new NumberFormatException();
         } catch (NumberFormatException e) {
-            message[2] = "You must enter a valid price number for the price.";
+            message[4] = "You must enter a valid price number.";
             filled = false;
         }
         
         //Create product object
-        Product product = new Product(code, desc, price);
+        Product product = new Product(code, name, desc, weight, price);
         
         if (filled) {
             //Update product to file
-            ProductIO.update(oldProductCode, product, path);
+            ProductIO.update(product, path);
             
             url = "/displayProducts";
         }
         else {
-            request.setAttribute("oldProductCode", oldProductCode);
             request.setAttribute("product", product);
             request.setAttribute("message", message);
             url = "/update_product.jsp";

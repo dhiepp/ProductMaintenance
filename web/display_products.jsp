@@ -1,8 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Product"%>
-
 <%@ include file="/includes/header.jsp" %>
-
 <%
     ArrayList<Product> products = (ArrayList)request.getAttribute("products");
 
@@ -15,14 +13,18 @@
 <table cellspacing="5" cellpadding="5" border="1">
     <tr>
         <th><strong>Code</strong></th>
+        <th><strong>Name</strong></th>
         <th><strong>Description</strong></th>
+        <th><strong>Weight</strong></th>
         <th><strong>Price</strong></th>
     <%
         for (Product pro : products) {
            %>
     <tr>
         <td><%= pro.getCode() %></td>
+        <td><%= pro.getName() %></td>
         <td><%= pro.getDescription() %></td>
+        <td><%= pro.getWeight() + "g" %></td>
         <td><%= "$" + pro.getPrice() %></td>
         <td><a href="updateProduct?productCode=<%= pro.getCode() %>">Edit</a></td>
         <td><a href="deleteProduct?productCode=<%= pro.getCode() %>">Delete</a></td>
@@ -33,5 +35,4 @@
 </table>
 <br>
 <a href="addProduct"><button type="button">Add Product</button></a>
-
 <%@ include file="/includes/footer.jsp" %>

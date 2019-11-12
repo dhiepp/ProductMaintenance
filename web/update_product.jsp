@@ -6,46 +6,46 @@
         response.sendRedirect("displayProducts");
         return;
     }
-  
-    String oldProductCode = (String) request.getAttribute("oldProductCode");
-    if (oldProductCode == null) {
-        oldProductCode = product.getCode();
-    }
     
     String message[] = (String[])request.getAttribute("message");
     
-    if (message == null) message = new String[3];
-    for (int i=0; i<3; i++) {
+    if (message == null) message = new String[5];
+    for (int i=0; i<5; i++) {
         if (message[i] == null) {
             message[i] = "";
         }
     }
 
 %>
-
 <%@ include file="/includes/header.jsp" %>
-
 <h1>Update Product</h1>
 <form action="updateProduct" method="post">
-    <input type="hidden" name="oldProductCode" value="<%= oldProductCode %>" />
     <table>
         <tr>
+        <tr>
             <td>Product Code:</td>
-            <td><input type="text" name="code" value="<%= product.getCode() %>"> <i><%= message[0] %></i></td>
+            <td><input type="text" name="code" value="<%= product.getCode() %>" readonly><i> <%= message[0] %></i></td>
+        </tr>
+        <tr>
+            <td>Product Name:</td>
+            <td><input type="text" name="name" value="<%= product.getName() %>"><i> <%= message[1] %></i></td>
         </tr>
         <tr>
             <td>Product Description:</td>
-            <td><input size="50" type="text" name="desc" value="<%= product.getDescription() %>"> <i><%= message[1] %></i></td>
+            <td><input size="50" type="text" name="desc" value="<%= product.getDescription() %>"><i> <%= message[2] %></i></td>
+        </tr>
+        <tr>
+            <td>Product Weight:</td>
+            <td><input type="text" name="weight" value="<%= product.getPrice()>=0?product.getWeight():"" %>"><i> <%= message[3] %></i></td>
         </tr>
         <tr>
             <td>Product Price:</td>
-            <td><input type="text" name="price" value="<%= product.getPrice()>=0?product.getPrice():"" %>"> <i><%= message[2] %></i></td>
+            <td><input type="text" name="price" value="<%= product.getPrice()>=0?product.getPrice():"" %>"><i> <%= message[4] %></i></td>
         </tr>
     </table>
     <br>
 
     <input type="submit" value="Update Product">
     <a href="displayProducts"><button type="button">View Products</button></a>
-</form>
-                    
+</form>              
 <%@ include file="/includes/footer.jsp" %>

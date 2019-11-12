@@ -37,7 +37,7 @@ public class UpdateProductServlet extends HttpServlet {
         ServletContext context = getServletContext();
         String path = context.getRealPath("/WEB-INF/products.txt");
         
-        String[] message = new String[2];
+        String[] message = new String[5];
         String url = "";
         boolean filled = true;
           
@@ -50,7 +50,7 @@ public class UpdateProductServlet extends HttpServlet {
         
         //Check empty fields
         if (name.isEmpty()) {
-            message[1] = "You must enter a description for the product.";
+            message[1] = "You must enter a name for the product.";
             filled = false;
         }
         if (desc.isEmpty()) {

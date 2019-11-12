@@ -32,7 +32,7 @@ public class AddProductServlet extends HttpServlet {
         ServletContext context = getServletContext();
         String path = context.getRealPath("/WEB-INF/products.txt");
         
-        String[] message = new String[3];
+        String[] message = new String[5];
         String url = "";
         boolean filled = true;
           

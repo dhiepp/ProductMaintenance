@@ -1,7 +1,6 @@
 package control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -21,7 +20,7 @@ public class DisplayProductsServlet extends HttpServlet {
         ServletContext context = getServletContext();
         String path = context.getRealPath("/WEB-INF/products.txt");
         
-        ArrayList<Product> products = ProductIO.read(path);
+        ArrayList<Product> products = ProductIO.getAll(path);
         
         request.setAttribute("products", products);
         String url = "/display_products.jsp";

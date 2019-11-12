@@ -7,9 +7,7 @@
         return;
     }
 %>
-
 <%@ include file="/includes/header.jsp" %>
-
 <h1>Are you sure you want to delete this product?</h1>
 <table>
     <tr>
@@ -17,8 +15,16 @@
         <td><%= product.getCode() %></td>
     </tr>
     <tr>
+        <td>Product Name:</td>
+        <td><%= product.getName() %></td>
+    </tr>
+    <tr>
         <td>Product Description:</td>
         <td><%= product.getDescription() %></td>
+    </tr>
+    <tr>
+        <td>Product Weight:</td>
+        <td><%= product.getWeight() %></td>
     </tr>
     <tr>
         <td>Product Price:</td>
@@ -31,5 +37,4 @@
     <input type="submit" value="Yes" />
     <a href="displayProducts"><button type="button">No</button></a>
 </form>
-
 <%@ include file="/includes/footer.jsp" %>

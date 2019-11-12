@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class ProductIO {
-    public static ArrayList<Product> read(String path) throws IOException {
+    public static ArrayList<Product> getAll(String path) throws IOException {
         ArrayList<Product> products = new ArrayList<Product>();
         
         File file = new File(path);
@@ -17,12 +17,13 @@ public class ProductIO {
         
         String line;
         while ((line = in.readLine()) != null) {
-            System.out.println(line);
             String[] data = line.split("\\|");
             String code = data[0];
-            String desc = data[1];
-            float price = Float.parseFloat(data[2]);
-            Product pro = new Product(code, desc, price);
+            String name = data[1];
+            String desc = data[2];
+            int weight = Integer.parseInt(data[3]);
+            float price = Float.parseFloat(data[4]);
+            Product pro = new Product(code, name, desc, weight, price);
             products.add(pro);
         }
         
@@ -36,12 +37,14 @@ public class ProductIO {
         
         String line;
         while((line = in.readLine()) != null) {
-            String productData[] = line.split("\\|");
-            if (productData[0].equalsIgnoreCase(productCode)) {
-                String code = productData[0];
-                String desc = productData[1];
-                float price = Float.parseFloat(productData[2]);
-                Product product = new Product(code, desc, price);
+            String data[] = line.split("\\|");
+            if (data[0].equalsIgnoreCase(productCode)) {
+                String code = data[0];
+                String name = data[1];
+                String desc = data[2];
+                int weight = Integer.parseInt(data[3]);
+                float price = Float.parseFloat(data[4]);
+                Product product = new Product(code, name, desc, weight, price);
                 
                 in.close();
                 return product;
@@ -56,22 +59,24 @@ public class ProductIO {
         File file = new File(path);
         PrintWriter out = new PrintWriter(new FileWriter(file, true));
         
-        String data = product.getCode() + "|" + product.getDescription() + "|" + product.getPrice();
+        String data = product.getCode() + "|" + product.getName() + "|" + product.getDescription() + "|"
+                + product.getWeight() + "|"+ product.getPrice();
         out.println(data);
         
         out.close();
     }
         
-    public static void update (String oldProductCode, Product product, String path) throws IOException {
+    public static void update (Product product, String path) throws IOException {
         File file = new File(path);
         BufferedReader in = new BufferedReader(new FileReader(file));
         ArrayList<String> fileContent = new ArrayList<>();
         
         String line;
         while((line = in.readLine()) != null) {
-            String productData[] = line.split("\\|");
-            if (productData[0].equalsIgnoreCase(oldProductCode)) {
-                String newData = product.getCode() + "|" + product.getDescription() + "|" + product.getPrice();
+            String data[] = line.split("\\|");
+            if (data[0].equalsIgnoreCase(product.getCode())) {
+                String newData = product.getCode() + "|" + product.getName() + "|" + product.getDescription() + "|"
+                        + product.getWeight() + "|"+ product.getPrice();
                 fileContent.add(newData);
             }
             else {
@@ -94,8 +99,8 @@ public class ProductIO {
         
         String line;
         while((line = in.readLine()) != null) {
-            String productData[] = line.split("\\|");
-            if (!productData[0].equalsIgnoreCase(productCode)) {
+            String data[] = line.split("\\|");
+            if (!data[0].equalsIgnoreCase(productCode)) {
                 fileContent.add(line);
             }
         }

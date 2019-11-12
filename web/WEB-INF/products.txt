@@ -1,4 +1,3 @@
-8601|86 (the band) - True Life Songs and Pictures|14.95
-pf01|Paddlefoot - The first CD|12.95
-pf02|Paddlefoot - The second CD|14.95
-jr01|Joe Rut - Genuine Wood Grained Finish|14.95
+a1|Tomato|Fresh from the garden|500|9.99
+b2|Spinach|No pesticide used|100|4.99
+c3|Cucumber|Imported from a Japanese farm|200|19.99

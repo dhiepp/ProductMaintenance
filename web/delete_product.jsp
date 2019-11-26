@@ -1,3 +1,4 @@
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ include file="/includes/header.jsp" %>
 <h1>Are you sure you want to delete this product?</h1>
 <table>

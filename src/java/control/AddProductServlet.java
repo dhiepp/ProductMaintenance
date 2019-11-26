@@ -32,7 +32,7 @@ public class AddProductServlet extends HttpServlet {
         ServletContext context = getServletContext();
         String path = context.getRealPath("/WEB-INF/products.txt");
         
-        String[] message = new String[5];
+        String[] messages = new String[5];
         String url = "";
         boolean filled = true;
           
@@ -45,15 +45,15 @@ public class AddProductServlet extends HttpServlet {
         
         //Check empty fields
         if (code.isEmpty()) {
-            message[0] = "You must enter a code for the product.";
+            messages[0] = "You must enter a code for the product.";
             filled = false;
         }
         if (name.isEmpty()) {
-            message[1] = "You must enter a description for the product.";
+            messages[1] = "You must enter a description for the product.";
             filled = false;
         }
         if (desc.isEmpty()) {
-            message[2] = "You must enter a description for the product.";
+            messages[2] = "You must enter a description for the product.";
             filled = false;
         }
         
@@ -63,7 +63,7 @@ public class AddProductServlet extends HttpServlet {
             weight = Integer.parseInt(weightString);
             if (weight < 0) throw new NumberFormatException();
         } catch (NumberFormatException e) {
-            message[3] = "You must enter a valid weight number.";
+            messages[3] = "You must enter a valid weight number.";
             filled = false;
         }  
         //Check price number
@@ -72,7 +72,7 @@ public class AddProductServlet extends HttpServlet {
             price = Float.parseFloat(priceString);
             if (price < 0) throw new NumberFormatException();
         } catch (NumberFormatException e) {
-            message[4] = "You must enter a valid price number.";
+            messages[4] = "You must enter a valid price number.";
             filled = false;
         }
         
@@ -87,7 +87,7 @@ public class AddProductServlet extends HttpServlet {
         }
         else {
             request.setAttribute("product", product);
-            request.setAttribute("message", message);
+            request.setAttribute("message", messages);
             url = "/add_product.jsp";
         }
 

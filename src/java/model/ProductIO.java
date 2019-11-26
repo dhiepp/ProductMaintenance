@@ -38,7 +38,7 @@ public class ProductIO {
         String line;
         while((line = in.readLine()) != null) {
             String data[] = line.split("\\|");
-            if (data[0].equalsIgnoreCase(productCode)) {
+            if (data[0].equals(productCode)) {
                 String code = data[0];
                 String name = data[1];
                 String desc = data[2];
@@ -74,7 +74,7 @@ public class ProductIO {
         String line;
         while((line = in.readLine()) != null) {
             String data[] = line.split("\\|");
-            if (data[0].equalsIgnoreCase(product.getCode())) {
+            if (data[0].equals(product.getCode())) {
                 String newData = product.getCode() + "|" + product.getName() + "|" + product.getDescription() + "|"
                         + product.getWeight() + "|"+ product.getPrice();
                 fileContent.add(newData);
@@ -100,7 +100,7 @@ public class ProductIO {
         String line;
         while((line = in.readLine()) != null) {
             String data[] = line.split("\\|");
-            if (!data[0].equalsIgnoreCase(productCode)) {
+            if (!data[0].equals(productCode)) {
                 fileContent.add(line);
             }
         }

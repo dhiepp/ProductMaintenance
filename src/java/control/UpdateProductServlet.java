@@ -1,5 +1,6 @@
 package control;
 
+import data.ProductDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -21,7 +22,9 @@ public class UpdateProductServlet extends HttpServlet {
         String url = "/displayProducts";
         String productCode = request.getParameter("productCode");
         if (productCode != null) {
-            Product product = ProductIO.get(productCode, path);
+            //Select product from DB
+            Product product = ProductDB.selectProduct(productCode);
+            
             if (product != null) {
                 request.setAttribute("product", product);
                 url = "/update_product.jsp";
@@ -81,8 +84,8 @@ public class UpdateProductServlet extends HttpServlet {
         Product product = new Product(code, name, desc, weight, price);
         
         if (filled) {
-            //Update product to file
-            ProductIO.update(product, path);
+            //Update product to DB
+            ProductDB.updateProduct(product);
             
             url = "/displayProducts";
         }

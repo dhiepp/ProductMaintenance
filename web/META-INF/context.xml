@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/Product_Maintenance"/>
+<Context path="/Product_Maintenance">
+
+    <Resource name="jdbc/nong_san" auth="Container" 
+    maxActive="100" maxIdle="30" maxWait="10000" 
+    username="root" password="admin" 
+    driverClassName="com.mysql.jdbc.Driver" 
+    url="jdbc:mysql://localhost:3306/nong_san?autoReconnect=true" 
+    logAbandoned="true" removeAbandoned="true" 
+    removeAbandonedTimeout="60" type="javax.sql.DataSource" />
+
+</Context>

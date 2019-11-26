@@ -1,5 +1,6 @@
 package control;
 
+import data.ProductDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -80,8 +81,8 @@ public class AddProductServlet extends HttpServlet {
         Product product = new Product(code, name, desc, weight, price);
         
         if (filled) {
-            //Add product to file
-            ProductIO.add(product, path);
+            //Add product to DB
+            ProductDB.insertProduct(product);
             
             url = "/displayProducts";
         }

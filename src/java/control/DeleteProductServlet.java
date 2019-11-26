@@ -1,5 +1,6 @@
 package control;
 
+import data.ProductDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -22,7 +23,9 @@ public class DeleteProductServlet extends HttpServlet {
         String url = "/displayProducts";
         String productCode = request.getParameter("productCode");
         if (productCode != null) {
-            Product product = ProductIO.get(productCode, path);
+            //Select product from DB
+            Product product = ProductDB.selectProduct(productCode);
+            
             if (product != null) {
                 request.setAttribute("product", product);
                 url = "/delete_product.jsp";
@@ -42,7 +45,8 @@ public class DeleteProductServlet extends HttpServlet {
         String productCode = request.getParameter("productCode");
         
         if (productCode != null) {
-            ProductIO.delete(productCode, path);
+            //Delete product from DB
+            ProductDB.deleteProduct(productCode);
         }
         
         String url = "/displayProducts";
